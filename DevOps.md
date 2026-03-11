@@ -108,3 +108,40 @@ Test
 Deploy
 ↓
 Canlı Site
+
+**_ Örnek Pipeline Dosyası _**
+
+- Repository içinde şu dosyayı oluşturursun:
+  .github/workflows/dotnet.yml
+- İçine şu kodu yazarsın:
+
+  name: .NET CI Pipeline
+  on:
+  push:
+  branches: [ "main" ]
+  pull_request:
+  branches: [ "main" ]
+  jobs:
+  build:
+  runs-on: ubuntu-latest
+
+      steps:
+        - name: Repository çek
+          uses: actions/checkout@v3
+
+        - name: .NET kur
+          uses: actions/setup-dotnet@v3
+          with:
+            dotnet-version: '8.0.x'
+
+        - name: Paketleri indir
+          run: dotnet restore
+
+        - name: Build al
+          run: dotnet build --configuration Release --no-restore
+
+        - name: Testleri çalıştır
+          run: dotnet test --no-build --verbosity normal
+
+        - name: Publish oluştur
+          run: dotnet publish -c Release -o publish
