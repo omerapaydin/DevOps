@@ -109,6 +109,12 @@ Deploy
 ↓
 Canlı Site
 
+**_ IIS _**
+
+- Internet Information Services
+- Bu, Microsoft tarafından geliştirilen bir web sunucusudur.
+- Web sitelerini veya API’leri çalıştıran programdır.
+
 **_ Örnek Pipeline Dosyası _**
 
 - Repository içinde şu dosyayı oluşturursun:
